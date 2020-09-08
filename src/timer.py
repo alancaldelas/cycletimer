@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 '''
 Alan Caldelas
 '''
@@ -21,7 +22,7 @@ def start_timer_rest(completed):
 	else:
 		print("You have completed this section {completed} /5")
 		rtime = 5
-	print("REST TIME HAS BEGUN FOR rtime")
+	print(f"REST TIME HAS BEGUN FOR {rtime}")
 	count = 0
 	while(count != rtime):
 		time.sleep(60)
@@ -42,16 +43,16 @@ def start_timer_read(completed):
 	print(f"You have completed {completed} so far")
 	print("TIME HAS BEGUN")
 	count = 0
-	while(count != 1):
+	while(count != 25):
 		time.sleep(60)
 		count = count + 1
 		print(f"Min elapsed... {count} mins")
 	completed = completed + 1
-	subprocess.run(["zenity","--width=250", "--height=250", "--warning", "--text='finished time'"])
 	
 	print("Time has completed")
 	urls = get_videos()
 	webbrowser.open(random.choice(urls))
+	subprocess.run(["zenity","--width=250", "--height=250", "--warning", "--text='finished time'"])
 	start_timer_rest(completed)
 
 def retrieve_input(completed):
